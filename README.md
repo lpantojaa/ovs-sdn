@@ -1,13 +1,13 @@
-Project Title: OpenFlow SDN Application
-This is an OpenFlow Software-Defined Networking (SDN) application project which simulates an Internet environment, implements a payment page, and uses a Ryu controller to manage the network.
+# Project Title: OpenFlow SDN WiFi AP
 
-Dependencies
+This is an OpenFlow Software-Defined Networking (SDN) application project which simulates an Internet environment, implements a payment page, and uses a Ryu controller to manage the network. 
+
+## Dependencies
 This project requires:
-
-Flask
-Ryu controller
-OpenvSwitch
-SQLite3
+- Flask
+- Ryu controller
+- OpenvSwitch
+- SQLite3
 
 ## Setup & Running the Project
 
@@ -75,5 +75,4 @@ To view all data in the `mac_addresses` table, use the SELECT SQL command:
 
 ```bash
 select * from mac_addresses;
-```
 ```
