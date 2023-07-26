@@ -1,14 +1,13 @@
-```markdown
-# Project Title: OpenFlow SDN WiFi AP
+Project Title: OpenFlow SDN Application
+This is an OpenFlow Software-Defined Networking (SDN) application project which simulates an Internet environment, implements a payment page, and uses a Ryu controller to manage the network.
 
-This is an OpenFlow Software-Defined Networking (SDN) application project which simulates an Internet environment, implements a payment page, and uses a Ryu controller to manage the network. 
-
-## Dependencies
+Dependencies
 This project requires:
-- Flask
-- Ryu controller
-- OpenvSwitch
-- SQLite3
+
+Flask
+Ryu controller
+OpenvSwitch
+SQLite3
 
 ## Setup & Running the Project
 
