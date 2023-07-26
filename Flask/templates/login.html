@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <!-- Optional: Include Bootstrap for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-danger">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <!-- End flash messages -->
+
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="card_number">Card Number</label>
+                <input type="text" id="card_number" name="card_number" required class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="expiry_date">Expiry Date (MM/YY)</label>
+                <input type="text" id="expiry_date" name="expiry_date" required class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</body>
+</html>
