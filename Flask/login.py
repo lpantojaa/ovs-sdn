@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import re
 import requests
+from datetime import datetime
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -64,6 +65,16 @@ def login():
         # Invalid expiry date
         if not re.match(r'^\d{2}/\d{2}$', expiry_date):
             flash('Invalid expiry date. It should be in MM/YY format.')
+            return render_template('login.html')
+
+        # Check if the card's expiry date is in the future
+        current_year = datetime.now().year % 100  # Get current year (last two digits)
+        current_month = datetime.now().month  # Get current month
+        expiry_month, expiry_year = map(int, expiry_date.split('/'))  # Split expiry date into month and year
+
+        # Check if expiry year is less than current year or if the expiry year is the same and the expiry month is less than the current month
+        if expiry_year < current_year or (expiry_year == current_year and expiry_month < current_month):
+            flash('Invalid expiry date. The card has already expired.')
             return render_template('login.html')
 
         # Get client's IP address and MAC address

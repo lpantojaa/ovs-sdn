@@ -1,19 +1,10 @@
 # Import necessary libraries
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, redirect, url_for, session
 
 # Initialize Flask application
 app = Flask(__name__)
 
-# Set up SQLite database with SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/leandro/finalproject/whitelist.db'
 app.config['SECRET_KEY'] = 'tele4642'  # Add a secret key for flash messages
-db = SQLAlchemy(app)
-
-# Define database model for MAC addresses
-class MacAddress(db.Model):
-    __tablename__ = 'mac_adresses'
-    mac = db.Column(db.String, primary_key=True)
 
 # Route for internet access page
 @app.route('/')
