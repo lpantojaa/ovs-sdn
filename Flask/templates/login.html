@@ -2,13 +2,18 @@
 <html>
 <head>
     <title>Wifi Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
-
+        @font-face {
+            font-family: 'Raleway';
+            src: url('{{ url_for('static', filename='fonts/Raleway-Regular.ttf') }}');
+        }
+        
         body {
             font-family: 'Raleway', sans-serif;
-            background-color: #333;
-            color: #fff;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,15 +23,17 @@
 
         .container {
             max-width: 500px;
+            width: 90%; /* Responsive width */
             padding: 20px;
-            background-color: #444;
+            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            color: #5b86e5;
         }
 
         .form-group {
@@ -38,17 +45,18 @@
             border-radius: 5px;
             border: 1px solid #ddd;
             box-shadow: none;
-            color: #fff;
-            background-color: #555;
+            color: #333;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
         }
 
         .form-control:focus {
-            border-color: #5cb85c;
-            box-shadow: 0 0 5px #5cb85c;
+            border-color: #5b86e5;
+            box-shadow: 0 0 5px #5b86e5;
         }
 
         label {
-            color: #ccc;
+            color: #666;
         }
 
         .btn {
@@ -58,18 +66,49 @@
             border: none;
             font-weight: bold;
             cursor: pointer;
-            background-color: #5cb85c;
+            background-color: #5b86e5;
             color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4a74c9;
         }
 
         .alert {
             margin-top: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        p.description {
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 575.98px) {
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            p.description {
+                font-size: 0.9em;
+            }
+            
+            .container {
+                width: 90%;
+                padding: 10%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Login</h2>
+        <p class="description">Log in to gain internet access for 60 seconds.</p>
+        
         <!-- Display flash messages -->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
