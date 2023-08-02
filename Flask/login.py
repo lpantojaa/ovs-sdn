@@ -1,5 +1,5 @@
 # Import necessary libraries
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
 import re
@@ -93,15 +93,11 @@ def login():
 
                 # Send API request to Ryu controller to allow traffic on port 443
                 try:
-                    response = requests.post("http://localhost:8080/flows/allow_port_443", 
-                                             json={"mac": mac_address, "dpid":"1"})
+                    response = requests.post("http://localhost:8080/flows/allow_port_443", json={"mac": mac_address, "dpid":"1"})
                     response.raise_for_status()  # Check if request was successful
                 except requests.exceptions.RequestException as e:
                     flash(f'Error sending request to Ryu controller: {e}')
                     return render_template('login.html')
-
-            # Set session variable
-            session['authenticated'] = True
             
             # Redirect to internet access page
             return redirect('https://10.3.141.1')
@@ -111,8 +107,5 @@ def login():
 
 # Run the application
 if __name__ == "__main__":
-    # Create all necessary tables in the database
-    with app.app_context():
-        db.create_all()
     # Start the Flask application
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='10.3.141.1', port=5000)

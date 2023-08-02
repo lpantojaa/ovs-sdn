@@ -1,6 +1,5 @@
 # Import necessary libraries
-from flask import Flask, render_template, redirect, url_for, session
-
+from flask import Flask, render_template
 # Initialize Flask application
 app = Flask(__name__)
 
@@ -9,9 +8,6 @@ app.config['SECRET_KEY'] = 'tele4642'  # Add a secret key for flash messages
 # Route for internet access page
 @app.route('/')
 def internet():
-    # Check if device has been authenticated
-    if not session.get('authenticated'):
-        return redirect(url_for('login'))  # or some other response
     return render_template('internet.html')
 
 # Run the application
